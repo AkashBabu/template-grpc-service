@@ -48,5 +48,8 @@
         "nyc": "^12.0.2",
         "pre-commit": "^1.2.2",
         "rimraf": "^2.6.2"
+    },
+    "dependencies": {
+        "grpc-pool": "git@github.com:AkashBabu/lib-grpc-client-pool.git"
     }
 }

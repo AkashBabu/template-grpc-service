@@ -1,11 +1,11 @@
-# template-lib
-Nodejs Template for libraries
+# template-grpc-service
+Template for Nodejs GRPC Service
 
-This package includes the following:  
-- ES-Lint
-- Babel
-- Mocha & chai
-- Coverage Report (nyc)
+## Sample Usage
+```js
+import { RPC_Hi } from 'template-grpc-service'
+const result = await RPC_Hi({ msg: 'Hey Bot!' });
+```
 
 
 ## ES-Lint
