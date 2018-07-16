@@ -4,11 +4,15 @@
     "description": "Template for Nodejs libraries",
     "main": "dist/index.js",
     "scripts": {
-        "test": "export NODE_ENV=test && mocha --require babel-core/register --require babel-polyfill test/**/*.test.js --exit",
-        "test:dev": "export NODE_ENV=test &&  mocha --require babel-core/register --require babel-polyfill test/**/*.test.js",
-        "build": "$(npm bin)/rimraf dist/ && $(npm bin)/babel src --out-dir dist",
-        "coverage": "export NODE_ENV=test && nyc mocha --require babel-core/register --require babel-polyfill test.js --exit",
-        "lint": "$(npm bin)/eslint --config .eslintrc src/index.js"
+        "_test": "mocha --require babel-core/register --require babel-polyfill test/**/*.test.js",
+        "_test:exit": "npm run _test -- --exit",
+        "test": "export NODE_ENV=test && npm run _test:exit",
+        "test:dev": "export NODE_ENV=test &&  npm run _test",
+        "coverage": "export NODE_ENV=test && nyc -- npm run _test:exit",
+        "build": "rimraf dist/ && babel src --out-dir dist",
+        "lint": "eslint --config .eslintrc src/index.js",
+        "benchmark": "radargun benchmark/**/*.bench.js",
+        "status": "git status"
     },
     "repository": {
         "type": "git",
@@ -24,7 +28,9 @@
     "precommit": [
         "lint",
         "coverage",
-        "build"
+        "build",
+        "benchmark",
+        "status"
     ],
     "devDependencies": {
         "babel-cli": "^6.26.0",
@@ -47,6 +53,7 @@
         "mocha": "^5.2.0",
         "nyc": "^12.0.2",
         "pre-commit": "^1.2.2",
+        "radargun": "^1.0.1",
         "rimraf": "^2.6.2"
     },
     "dependencies": {
