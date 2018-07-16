@@ -1,11 +1,13 @@
 # template-grpc-service
 Template for Nodejs GRPC Service
 
-## Sample Usage
-```js
-import { RPC_Hi } from 'template-grpc-service'
-const result = await RPC_Hi({ msg: 'Hey Bot!' });
-```
+## Running the application
+> npm install  
+> npm run build  
+> npm start  
+
+## Running the application in dev-mode
+> npm run dev  
 
 ## Installation
 > npm i lib -S
